@@ -1,0 +1,16 @@
+//creating directories, creating files and adding to files
+#!/bin/bash
+
+# Define the folder name
+folder_name="my_folder"
+
+# Create the folder
+mkdir "$folder_name"
+
+# Create two files within the folder
+touch "$folder_name/file1.txt"
+touch "$folder_name/file2.txt"
+
+# You can also add content to the files if needed
+echo "This is content for file1." > "$folder_name/file1.txt"
+echo "This is content for file2." > "$folder_name/file2.txt"
