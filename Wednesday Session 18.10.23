@@ -1,0 +1,15 @@
+The basename command is used to extract the base name of a file path, which is essentially the filename without the directory path. The basic syntax is as follows:
+
+The dirname command extracts the directory portion of a file path, excluding the filename itself.
+
+#!/bin/bash
+
+file_path="/path/to/myfile.txt"
+
+# Without basename
+echo "Full file path: $file_path"
+
+# With basename
+filename=$(basename "$file_path")
+echo "Filename: $filename"
+
