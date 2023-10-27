@@ -19,11 +19,11 @@ fi
 add_friend.sh
 
 Takes in 2 arguments - id for user and id for friend added
-
+//check for 2 args
 if(user exists & friend exists)
 	if(friend is not on user friend list) //if grep	“$friend” “$id”/friends > dev/null; then
 		add friend to user’s friend list
-		exit 0
+		exit 0c
 	else
 		user is already on friends list
 		exit 1
