@@ -1,10 +1,10 @@
 #!/bin/bash
 
 
-while true; do
-	read -p "Enter a request: " request
+while true; do #creating an endless loop
+	read -p "Enter a request: " request # reading in one of the 4 commands
 	case "$request" in 
-		"create")
+		"create") #
 		read -p "Enter a user name: " user
 		./create.sh "$user"
 			;;
