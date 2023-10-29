@@ -11,6 +11,7 @@ if [ "$#" -eq 1 ]; then #check if there are the correct amount of arguements
 		exit 0
 	else
 		echo "user does not exist"
+  		exit 1
 	fi
 else
 	echo "Incorrect number of arguements, $# given but only 1 required"
