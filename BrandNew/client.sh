@@ -26,19 +26,19 @@ while true; do
 
 	
 	# Tell me a query
-	echo "before request"
-	read -p "Enter request: " cmd args
-	echo "after request"
+	#echo "before request"
+	read -p "Enter request: " cmd args #enter which operation you want 
+	#echo "after request"
 	
 	# Send it to server
 	echo "$cmd $id $args" > $server_pipe
-	echo "after sending to server"
-	#./server.sh "$cmd" "$id" "$args"
+	#echo "after sending to server"
 	
-	# Read Response
-	content=$(cat "$client_pipe")
-	echo "after response"
-	
+	# Read the content of the client pipe into variable content
+	content=$(cat "$client_pipe") 
+	#echo "after response"
+
+ 	# These are all the possible outcomes across all 4 operations
 	case "$content" in
 		"ok: user created!")
 		echo "SUCCESS: User created!"
