@@ -3,24 +3,33 @@
 #Takes in 1 argument - id
 #Creating a user
 
-path="Users" #variable that holds the pathway
+path="Users"
 
-if [ "$#" -eq 1 ]; then #one and only 1 arg
-	arg="$1" #set the argument to variable arg
+#needs access to client pipe, needs to be able send a response down it
+client_pipe="/home/ranya/Desktop/Users/Pipes/$id/client"
+
+#check if the user folder exists, else make it
+if [ ! -d "/home/ranya/Desktop/Users" ]; then
+	mkdir -p "/home/ranya/Desktop/Users"
+fi
+
+#checking for valid amount of inputs
+if [ "$#" -eq 1 ]; then
+	arg="$1" #for e.g. "Ranya"
 	if [ -d "/home/ranya/Desktop/Users/$arg" ]; then #check if user folder already exists
-		echo "User already exists" #if it's found that means it was previously created
-  		exit 1
-	else 
- 		#user doesn't exist
+		echo "nok: user already exists" #response
+		exit 1 #exit, operation finished
+	else
+ 		#create all the files needed for a user
 		mkdir -p "$path/$arg" #creates a directory with the name of the argument
-		touch "$path/$arg/wall.txt" #creates a file called wall.txt
-		touch "$path/$arg/friends.txt" #creates a file called friends.txt
-		echo "Start_Of_File" >> "$path/$arg/wall.txt" #adds "Start_Of_File" to the wall.txt
-		echo "$arg" >> "$path/$arg/friends.txt" #adds yourself to your own friends.txt, this allows you to write on your own wall
-		echo "User created successfully"
-  		exit 0
+		touch "$path/$arg/wall.txt" #creates wall 
+		touch "$path/$arg/friends.txt" #creates friends list
+		echo "Start_Of_File" >> "$path/$arg/wall.txt" #add start of file to wall file
+		echo "$arg" >> "$path/$arg/friends.txt" #add yourself - allows you to post on your own wall
+		echo "ok: user created!"
+		exit 0 #exit, operation finished
 	fi
 else
-	echo "Usage: $0 <arg>" #wrong amount of args given
-	exit 1 #failed
+	echo "Usage: $0 <arg>" #wrong amount of args
+	exit 1 #exit, operation failed
 fi
